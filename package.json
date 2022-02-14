@@ -4,7 +4,8 @@
   "description": "API para disponibilização de dados regionais da COVID-19",
   "main": "app.js",
   "scripts": {
-    "server": "nodemon app.js"
+    "server": "nodemon app.js",
+    "test": "node Test/crud.test.js"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,8 @@
     "express-ejs-layouts": "^2.5.1",
     "lodash": "^4.17.21",
     "mongodb": "^3.7.3",
-    "mongoose": "^6.1.7"
+    "mongoose": "^6.1.7",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

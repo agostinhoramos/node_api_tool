@@ -8,15 +8,16 @@ exports.create = (req, res) => {
         lat: req.body.lat,
         long: req.body.long,
         date: req.body.date
-    });
-    coviddeath.save(function(err){
+    })
+    coviddeath.save(function(err, result){
         if(err){
             return next(err);
         }
         res.send({
-            message: 'Data created successfully!'
+            message: 'Data created successfully!',
+            _id: result._id.toString()
         });
-    });
+    })
 };
 exports.retrieve = (req, res) => {
     covidDeath.findById(req.params._id, function (err, data) {
