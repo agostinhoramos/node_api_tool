@@ -15,15 +15,15 @@ Esta interface agrega um conjunto de padrões, de rotinas e de funções de prog
 
 Resumidamente, uma API é um conector/interface que faz a interligação entre diferentes aplicações/sistemas com linguagens de programação distintas, de forma célere e com toda a segurança necessária. Estas podem ser utilizadas nos mais diversificados tipos de negócio e nos mais diferenciados contextos.
 
-Mais ideias:
+<p>Mais ideias:</p>
 
-O que é necessário fazer:
-1) Desenvolvimento de uma API com o mínimo de 10 funções (Dados devem ser guardados em Bases de Dados)
-2) Documentação da API no medium
-3) Apresentação de testes (ex. Postman)
+<p>O que é necessário fazer:</p>
+<p>1) Desenvolvimento de uma API com o mínimo de 10 funções (Dados devem ser guardados em Bases de Dados)</p>
+<p>2) Documentação da API no medium</p>
+<p>3) Apresentação de testes (ex. Postman)</p>
 
-A explorar...
-4) Autenticação da API
-5) Integração com trabalho de outras disciplinas
-6) Possível artigo científico
-7) GRAPHQL https://graphql.org/
+<p>A explorar...</p>
+<p>4) Autenticação da API</p>
+<p>5) Integração com trabalho de outras disciplinas</p>
+<p>6) Possível artigo científico</p>
+<p>7) GRAPHQL https://graphql.org/</p>
