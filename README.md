@@ -1,10 +1,7 @@
-# IPG
+## IPG - MESTRADO EM COMPUTAÇÃO MÓVEL
 
-
-# Trab 04 - Desenvolvimento de uma API
-
-*** API para disponibilização de dados regionais da COVID-19 ***
-
+# Trab 04 - API para disponibilização de dados regionais da COVID-19 (Portugal)
+<br/>
 O mundo atravessa um dos momentos mais difíceis por causa de uma pandemia provocada pelo novo SARS-COV-2. A tecnologia tem sido uma forte aliada, tendo sido já desenvolvidas várias soluções/plataformas para os mais diversos cenários. Nesse sentido, pretende-se que o aluno desenvolva uma "utility", na forma de API.
 
 A sigla API significa Application Programming Interface, em Português, Interface de Programação de Aplicações.
