@@ -20,4 +20,4 @@ Resumidamente, uma API é um conector/interface que faz a interligação entre d
 <p>5) Integração com trabalho de outras disciplinas</p>
 <p>6) Possível artigo científico</p>
 <p>7) GRAPHQL https://graphql.org/</p>
-<p>8) Swagger UI http://localhost:8888/api/test/admin</p>
+<p>8) Swagger UI http://localhost:8888/api-docs/</p>
