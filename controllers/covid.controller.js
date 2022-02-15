@@ -1,7 +1,8 @@
-const covidDeath = require('../models/covid_death.model');
+const db = require("../models/index.model");
+const Covid = db.covid;
 
 exports.create = (req, res) => {
-    let coviddeath = new covidDeath({
+    let covid = new Covid({
         country: req.body.country,
         state: req.body.state,
         total: req.body.total,
@@ -9,7 +10,7 @@ exports.create = (req, res) => {
         long: req.body.long,
         date: req.body.date
     })
-    coviddeath.save(function(err, result){
+    covid.save(function(err, result){
         if(err){
             return next(err);
         }
@@ -20,7 +21,7 @@ exports.create = (req, res) => {
     })
 };
 exports.retrieve = (req, res) => {
-    covidDeath.findById(req.params._id, function (err, data) {
+    Covid.findById(req.params._id, function (err, data) {
         if( !data ){
             res.send({"Error" : "Data not found"});
             return false;
@@ -39,7 +40,7 @@ exports.retrieve = (req, res) => {
     });
 };
 exports.update = (req, res) => {
-    covidDeath.findById(req.params._id, function (err, data) {
+    Covid.findById(req.params._id, function (err, data) {
         if( !data ){
             res.send({"Error" : "Data not found"});
             return false;
@@ -67,7 +68,7 @@ exports.update = (req, res) => {
     });
 };
 exports.delete = (req, res) => {
-    covidDeath.deleteOne({
+    Covid.deleteOne({
         _id: req.params._id
     }, function(err, data){
         if( data.deletedCount < 1 ){
@@ -85,7 +86,7 @@ exports.delete = (req, res) => {
     })
 };
 exports.retrieveAll = (req, res) => {
-    covidDeath.find({ "__v" : "0" }, function (err, data) {
+    Covid.find({ "__v" : "0" }, function (err, data) {
         if( !data ){
             res.send({"Error" : "Data not found"});
             return false;

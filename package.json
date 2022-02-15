@@ -1,6 +1,6 @@
 {
   "name": "node_api_tool",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "API para disponibilização de dados regionais da COVID-19",
   "main": "app.js",
   "scripts": {
@@ -14,7 +14,10 @@
   "keywords": [
     "Covid-19",
     "API",
-    "Data"
+    "Data",
+    "JWT",
+    "Authentication",
+    "SARS-COV-2"
   ],
   "author": "Agostinho Ramos",
   "license": "ISC",
@@ -23,6 +26,7 @@
   },
   "homepage": "https://github.com/agostinhoramos/node_api_tool#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -32,6 +36,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "express-ejs-layouts": "^2.5.1",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongodb": "^3.7.3",
     "mongoose": "^6.1.7",
