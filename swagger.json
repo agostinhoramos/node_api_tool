@@ -1,0 +1,386 @@
+{
+    "openapi" : "3.0.0",
+    "info" : {
+        "title" : "API dados regionais da COVID-19",
+        "description" : "IPG - MESTRADO EM COMPUTAÇÃO MÓVEL",
+        "termsOfService" : "/terms",
+        "contact" : {
+           "email" : "agostinhopina095@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url" : "http://localhost:8888/api",
+            "description" : "Localhost"
+        }
+    ],
+    "paths" : {
+        "/covid/create": {
+            "post" : {
+                "summary": "Criar dados de Covid-19",
+                "description" : "Permite criar dados sobre o covid-19",
+                "tags": ["Simple CRUD"],
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema" : {
+                                "$ref" : "#/components/schemas/Covid"
+                            },
+                            "examples": {
+                                "Covid" : {
+                                    "value" : {
+                                        "country": "São Tomé",
+                                        "state": "São Tomé",
+                                        "total" : 20,
+                                        "lat": 1.02,
+                                        "long": 0.012,
+                                        "date": "14/02/2021"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+                    "200" : {  "description": "OK" }
+                }
+            }
+        },
+        "/covid/retrieve/{_id}" : {
+            "get": {
+                "summary": "Ver dados de Covid-19",
+                "description" : "Permite ver dados sobre o covid-19",
+                "tags": ["Simple CRUD"],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "path",
+                        "description": "ID of covid to return",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses" : {
+                    "200" : {  "description": "OK" }
+                }
+            }
+        },
+        "/covid/update/{_id}" : {
+            "put": {
+                "summary": "Atualizar dados de Covid-19",
+                "description" : "Permite atualizar dados sobre o covid-19",
+                "tags": ["Simple CRUD"],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "path",
+                        "description": "ID of covid to return",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema" : {
+                                "$ref" : "#/components/schemas/Covid"
+                            },
+                            "examples": {
+                                "Covid" : {
+                                    "value" : {
+                                        "country": "Portugal"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+                    "200" : {  "description": "OK" }
+                }
+            }
+        },
+        "/covid/delete/{_id}" : {
+            "delete": {
+                "summary": "Apagar dados de Covid-19",
+                "description" : "Permite apagar dados sobre o covid-19",
+                "tags": ["Simple CRUD"],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "path",
+                        "description": "ID of covid to return",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses" : {
+                    "200" : {  "description": "OK" }
+                }
+            }
+        },
+        "/covid/retrieveall" : {
+            "get": {
+                "summary": "Ver todos dados de Covid-19",
+                "description" : "Permite ver todos os dados sobre o covid-19",
+                "tags": ["Simple CRUD"],
+                "produces": [
+                    "application/json"
+                ],
+                "responses" : {
+                    "200" : {  "description": "OK" }
+                }
+            }
+        },
+        "/auth/signup": {
+            "post" : {
+                "summary": "Registar novo utilizador",
+                "description" : "Permite registar novo utilizador na API",
+                "tags": ["JWT Authentication"],
+                "security": [{ "bearerAuth":[] }],
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema" : {
+                                "$ref" : "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "User" : {
+                                    "value" : {
+                                        "username" : "aramos",
+                                        "email" : "aramos@example.com",
+                                        "password" : "1234",
+                                        "roles" : ["admin"]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+                    "200" : {  "description": "OK" }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "summary": "Fazer login",
+                "description" : "Permite autenticação do utilizador",
+                "tags": ["JWT Authentication"],
+                "security": [{ "bearerAuth":[] }],
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "User": {
+                                    "value": {
+                                        "username": "aramos",
+                                        "password": "1234"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {  "description": "OK" }
+                }
+            }
+        },
+        "/test/all": {
+            "get": {
+                "summary": "Conteúdo visível para o Público",
+                "description" : "Autenticação não necessária",
+                "tags": ["Role-based access control with JWT"],
+                "produces": [
+                    "application/json"
+                ],
+                "security": [{ "bearerAuth":[] }],
+                "responses": {
+                    "200": {  "description": "OK" }
+                }
+            }
+        },
+        "/test/user": {
+            "get": {
+                "summary": "Conteúdo visível para qualquer Utilizador autenticado",
+                "description" : "Autenticação necessária",
+                "tags": ["Role-based access control with JWT"],
+                "produces": [
+                    "application/json"
+                ],
+                "security": [{ "bearerAuth":[] }],
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {  "description": "OK" }
+                }
+            }
+        },
+        "/test/mod": {
+            "get": {
+                "summary": "Conteúdo visível apenas para o Moderador autenticado",
+                "description" : "Autenticação necessária",
+                "tags": ["Role-based access control with JWT"],
+                "produces": [
+                    "application/json"
+                ],
+                "security": [{ "bearerAuth":[] }],
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {  "description": "OK" }
+                }
+            }
+        },
+        "/test/admin": {
+            "get": {
+                "summary": "Conteúdo visível para o Administrador autenticado",
+                "description" : "Autenticação necessária",
+                "tags": ["Role-based access control with JWT"],
+                "produces": [
+                    "application/json"
+                ],
+                "security": [{ "bearerAuth":[] }],
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {  "description": "OK" }
+                }
+            }
+        },
+
+        "/test/search_between_date/{start_date}/{end_date}": {
+            "get": {
+                "summary": "Sistema de pesquisa entre as datas",
+                "description" : "Permite autenticação do utilizador",
+                "tags": ["Search with JWT"],
+                "produces": [
+                    "application/json"
+                ],
+                "security": [{ "bearerAuth":[] }],
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "path",
+                        "description": "Data inicial",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "path",
+                        "description": "Data final",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {  "description": "OK" }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Covid": {
+                "type": "object",
+                "properties": {
+                    "country" : {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "total": {
+                        "type": "integer"
+                    },
+                    "lat": {
+                        "type": "number"
+                    },
+                    "long": {
+                        "type": "number"
+                    },
+                    "date": {
+                        "type": "string"
+                    }
+                }
+            },
+            "User" : {
+                "type": "object",
+                "properties": {
+                    "name" : {
+                        "type": "string"
+                    },
+                    "username" : {
+                        "type": "string"
+                    },
+                    "email" : {
+                        "type": "string"
+                    },
+                    "password" : {
+                        "type": "string"
+                    },
+                    "roles" : {
+                        "type": "array"
+                    }
+                }
+            },
+            "Role" : {
+                "type": "object",
+                "properties": {
+                    "name" : {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "securitySchemes": {
+        "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearer": "JWT"
+        }
+    }
+}

@@ -1,6 +1,9 @@
 // Import express.js
 let express = require('express');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
 // Import body parser
 let bodyParser = require('body-parser');
 
@@ -18,7 +21,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-
 
 const db = require("./models/index.model");
 const Role = db.role;
@@ -44,6 +46,9 @@ db.mongoose.connect(
 });
 
 // Use API routes in the app
+
+// Swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 // routes
 require('./routes/auth.routes')(app);

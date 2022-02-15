@@ -28,7 +28,8 @@ function test_create (next){
         body: JSON.stringify({
             "country": "São Tomé",
             "state": "São Tomé",
-            "lat": 0.02,
+            "total" : 20,
+            "lat": 1.02,
             "long": 0.012,
             "date": "14/02/2021"
         })
