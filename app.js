@@ -4,6 +4,10 @@ let express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
+// graphQL
+const { graphqlHTTP } = require("express-graphql");
+const schema = require("./Schemas/index");
+
 // Import body parser
 let bodyParser = require('body-parser');
 
@@ -49,6 +53,16 @@ db.mongoose.connect(
 
 // Swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+
+// GraphQL
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema,
+    graphiql: true,
+  })
+);
+
 
 // routes
 require('./routes/auth.routes')(app);

@@ -4,7 +4,7 @@
 require('../app')
 
 const mongoose = require('mongoose');
-const covidDeath = require('../models/covid_death.model');
+const covidDeath = require('../models/covid.model');
 
 const fs = require('fs');
 

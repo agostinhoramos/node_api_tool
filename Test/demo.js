@@ -5,5 +5,5 @@ console.log( token );
 
 jwt.verify(token, 'shhhhh', function(err, decoded) {
     if (err) console.log("Sistem failed!");
-    console.log("Ready!!!");
+    console.log("Ready!!! --> " + decoded.foo);
 });
